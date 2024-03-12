@@ -1,0 +1,504 @@
+.section {
+  background-image: url(../../../img/textureBg.png);
+  background-size: 2114px;
+  position: relative;
+  overflow: hidden;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem 0 2rem;
+    overflow: hidden;
+    &--logos, &--logo {
+      opacity: 0.7;
+    }
+    &--title {
+      font-family: 'Kyiv Region', sans-serif;
+      font-size: 83px;
+      font-weight: 700;
+      line-height: 80px;
+      letter-spacing: 0.07em;
+      margin-top: 1rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    column-gap: 4rem;
+    @media screen and (min-width: 1024px) and (max-width: 1400px) {
+      padding: 0 2rem;
+      column-gap: 1rem;
+    }
+
+    &__container--photo {
+      grid-row-start: 1;
+      grid-row-end: 4;
+      justify-self: center;
+      position: relative;
+      width: 571px;
+      @media screen and (max-width: 1025px) {
+        width: 32rem;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 10.5rem;
+        height: 10.5rem;
+        background-color: #BF1616;
+        overflow: hidden;
+        top: 27rem;
+        right: 27rem;
+        @media screen and (max-width: 1025px) {
+          top: 29rem;
+          right: 23rem;
+        }
+      }
+    }
+
+    &--photo {
+      grid-row-start: 1;
+      grid-row-end: 4;
+      justify-self: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    &--bureaux {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 28px;
+      grid-column-start: 2;
+      grid-column-end: 4;
+      justify-self: center;
+      align-self: center;
+
+      & span {
+        color: white;
+        background-color: #BF1616;
+        border: 2px solid #BF1616;
+        padding: 0.15rem 0.35rem;
+      }
+    }
+
+    &--mission {
+      grid-column-start: 2;
+      grid-column-end: 4;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 28px;
+      justify-self: center;
+      align-self: center;
+
+      & span {
+        color: white;
+        background-color: #BF1616;
+        border: 2px solid #BF1616;
+        padding: 0.15rem 0.35rem;
+      }
+    }
+
+    &--conclusion {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      color: white;
+      background-color: #BF1616;
+      padding: 3.25rem 2rem 0 2rem;
+      position: relative;
+      grid-column-start: 2;
+      grid-column-end: 4;
+
+      &::before {
+        content: '“';
+        position: absolute;
+        top: 24px;
+        left: 8px;
+        font-size: 48px;
+        font-family: "Montserrat", serif;
+        line-height: 58.51px;
+      }
+
+      & span {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &-containers {
+    margin: 8rem auto 2rem;
+  }
+}
+
+.logo-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.container1 {
+  max-width: 1500px;
+  padding: 2rem 5rem 5rem;
+  margin: 0 auto;
+  row-gap: 2rem;
+
+  &-number {
+    width: 100%;
+    height: 100%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 80px;
+    font-weight: 600;
+    line-height: 155px;
+    background-color: #BF1616;
+    text-align: center;
+    color: white;
+    //position: relative;
+  }
+
+  &-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 27px;
+    padding-left: 1rem;
+  }
+
+  &-info {
+    align-self: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  &-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  .wrapper-2, .wrapper-4{
+    order: 1;
+  }
+  .wrapper-number{
+    display: grid;
+    grid-template-rows: 155px;
+    grid-template-columns: 0.3fr 1fr;
+  }
+}
+
+.title {
+  font-family: 'Kyiv Region', sans-serif;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: 0.07em;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  @media screen and (max-width: 1200px) {
+    font-size: 55px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .section {
+    background-size: 1780px;
+
+    &-container {
+      display: flex;
+      padding: 3rem 2rem;
+      &--title{
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 4.48px;
+      }
+      &--logos:first-child{
+        display: none;
+      }
+      &--logo:first-child{
+        display: none;
+        @media (min-width: 480px) and (max-width: 670px){
+          display: block;
+        }
+      }
+    }
+    &-containers {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 2fr 0.8fr;
+      overflow: hidden;
+      margin: 5rem auto 2rem;
+      @media screen and (max-width: 726px) {
+        grid-template-columns: 2fr 0.5fr;
+      }
+    }
+
+    &-grid {
+      padding: 2rem;
+      grid-template-columns: 0.75fr 0.25fr;
+      grid-template-rows: repeat(4, auto);
+      row-gap: 2rem;
+
+      &__container--photo {
+        grid-column: 1/3;
+        grid-row: 3;
+        width: 100%;
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+  .container1{
+    padding: 2rem 1rem 5rem;
+
+    &-wrapper{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      row-gap: 2rem;
+    }
+    .wrapper-1, .wrapper-2, .wrapper-3, .wrapper-4{
+      order: 1;
+    }
+    &-info {
+      font-size: 24px;
+      margin: 0;
+      line-height: normal;
+    }
+
+
+    &-title {
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+    }
+  }
+  .logo-container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+  .section-grid--bureaux {
+    grid-column: 1/3;
+    grid-row: 1;
+    font-size: 15px;
+    line-height: 21px;
+    width: 100%;
+  }
+  .section-grid--mission {
+    grid-row: 2;
+    grid-column: 1/3;
+    font-size: 15px;
+    line-height: 21px;
+    width: 100%;
+  }
+  .section-grid--conclusion {
+    grid-row: 4;
+    grid-column: 1/3;
+    font-size: 15px;
+    line-height: 21px;
+    width: 100%;
+    padding: 2.75rem 2rem 2rem 2rem;
+  }
+  .section-grid--photo {
+    width: 100%;
+
+  }
+  .title {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 62px;
+    grid-row: 1/3;
+    margin-left: 3rem;
+    white-space: normal;
+    @media screen and (max-width: 726px) {
+      font-size: 50px;
+    }
+    @media screen and (max-width: 550px) {
+      font-size: 43px;
+    }
+  }
+  .logo-container {
+    grid-row: 1;
+  }
+  .logo-containers {
+    position: absolute;
+    left: 28rem;
+    gap: 1rem;
+    justify-content: start;
+    @media screen and (max-width: 726px) {
+      left: 24rem;
+    }
+    @media screen and (max-width: 550px) {
+      left: 21rem;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section {
+    padding-bottom: 0;
+    background-size: 450vh;
+    &-container {
+      padding: 3rem 0 2rem;
+      &--title {
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 2.8px;
+        margin-top: 0.5rem;
+      }
+
+      &--logo:first-child {
+        display: none;
+      }
+    }
+
+    &-containers {
+      padding: 1rem 0 2rem;
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 2fr 0.5fr;
+
+      &--logo {
+        //width: 2.18rem;
+      }
+    }
+  }
+
+  .container1 {
+    padding: 0 1rem;
+    &-wrapper {
+      row-gap: 1rem;
+      margin-bottom: 3rem;
+      grid-template-rows: 0.3fr 1fr;
+    }
+    &-number {
+      width: 57px;
+      height: 57px;
+      font-size: 24px;
+      grid-column: 1/3;
+      justify-self: center;
+      align-self: center;
+      line-height: 60px;
+    }
+    &-title {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 16px;
+    }
+    &-info {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+  .container1 .wrapper-number{
+    grid-template-rows: 0;
+    grid-template-columns:0.5fr 1fr;
+  }
+  .container1-image {
+    display: none;
+  }
+  .section-container--ornament1 {
+    display: none;
+  }
+
+  .section-container--title {
+    padding-left: 1rem;
+    font-size: 37px;
+    line-height: 5rem;
+    width: 14rem;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    padding: 0 1rem;
+  }
+  .title {
+    margin-left: 1.5rem;
+    font-size: 37px;
+    font-weight: 500;
+    line-height: 39px;
+    grid-row: 1/3;
+    white-space: normal;
+    @media screen and (max-width: 393px) {
+      font-size: 27px;
+    }
+  }
+  .section-grid--photo {
+    grid-column: 1/3;
+    grid-row: 3;
+    width: 100%;
+    height: auto;
+  }
+  .section-container--logo {
+    //width: 2.19rem;
+  }
+
+  .section-grid--bureaux,
+  .section-grid--mission,
+  .section-grid--conclusion {
+    grid-column: 1/3;
+    font-size: 15px;
+    line-height: 21px;
+    width: 100%;
+  }
+
+
+  .container-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .container-info {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: center;
+  }
+  .logo-containers {
+    left: 17rem;
+    @media screen and (max-width: 393px) {
+      left: 14rem;
+    }
+  }
+  .logo-container {
+    & img:nth-child(2) {
+      display: block;
+    }
+  }
+  .container-number {
+
+    line-height: 3.5rem;
+    font-size: 36px;
+  }
+}

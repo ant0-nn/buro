@@ -1,0 +1,54 @@
+.more-project {
+  background: #BF1616;
+  padding: 20px;
+  width: 441px;
+  height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  transition: 0.35s;
+  &:hover{
+    background: #bf1616B0;
+  }
+  @media (max-width: 992px) {
+    background: #BF1616;
+    margin-top: 65px;
+    width: 400px;
+    height: 95px;
+  }
+  @media (max-width: 568px) {
+    width: 248px;
+    height: 78.177px;
+  }
+  &__title {
+    color: #FFF;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    @media (max-width: 1300px) {
+      font-size: 16px;
+    }
+    @media (max-width: 992px) {
+      font-size: 24px;
+    }
+    @media (max-width: 568px) {
+      font-size: 14px;
+    }
+  }
+  &__img {
+    width: 66px;
+    height: 66px;
+    @media (max-width: 1300px) {
+      width: 50px;
+      height: 50px;
+    }
+    @media (max-width: 992px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -1,0 +1,230 @@
+.First {
+  position: relative;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 2.2s ease-in-out;
+  transition-delay: 0.5s;
+  image-rendering: auto;
+  @media (max-width: 480px) {
+    height: 30rem;
+  }
+  &__info {
+    padding-top: 122px;
+    display: grid;
+    justify-content: center;
+    @media (max-width: 992px) {
+      padding: 122px 30px 0;
+    }
+  }
+
+  &__logo {
+    width: 800px;
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    color: #FFF;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    @media (max-width: 568px) {
+      &:last-child {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__projects {
+    padding-top: 186px;
+    padding-bottom: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 992px) {
+      padding-top: 90px;
+      flex-direction: column;
+    }
+
+    &__title {
+      transform: rotate(-90deg);
+      color: #FFF;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+      @media (max-width: 992px) {
+        font-size: 20px;
+        transform: rotate(0deg);
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      gap: 25px;
+      @media (max-width: 992px) {
+        margin-top: 40px;
+      }
+      @media (max-width: 568px) {
+        gap: 5%;
+      }
+    }
+
+    &__block {
+      position: relative;
+      display: flex;
+      border: 3px solid #FFF;
+
+      &:hover {
+        .First__projects--container {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          display: grid;
+          grid-template-columns: 0.2fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          column-gap: 1rem;
+          align-items: center;
+          transition: transform 0.25s;
+
+        }
+      }
+
+      @media (max-width: 992px) {
+        width: 166px;
+        height: 169px;
+      }
+      @media (max-width: 568px) {
+        width: 150px;
+        height: 153px;
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+
+    &__img {
+      width: 166px;
+      height: 169px;
+      object-fit: cover;
+      transition: filter 0.3s ease;
+      filter: blur(0);
+
+      &:hover {
+        filter: blur(2px);
+      }
+
+      @media (max-width: 992px) {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &--container {
+      display: none;
+    }
+
+    &--number {
+      text-align: center;
+      color: white;
+      width: 1.25rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 19px;
+      background-color: #BF1616;
+      border-radius: 50%;
+      align-self: center;
+      justify-self: center;
+      grid-row: 1/3;
+    }
+
+    &--info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 5px;
+      gap: 5px;
+    }
+
+    &--title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 11px;
+      text-transform: uppercase;
+      color: white;
+      justify-self: center;
+      align-self: center;
+    }
+
+    &--square {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      font-weight: 400;
+      line-height: 9px;
+      text-transform: uppercase;
+      color: white;
+      justify-self: center;
+      grid-column: 2;
+    }
+
+  }
+}
+@media (max-width: 992px) {
+  .First__projects--container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 1rem;
+    align-items: center;
+    transition: transform 0.25s;
+
+  }
+}
+.dots {
+  justify-self: end;
+  position: absolute;
+  right: 20px;
+  transform: translateX(0) rotate(90deg);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+.dotes {
+  width: 11px;
+  height: 11px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  margin: 0 5px;
+
+  transition: background-color 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  z-index: 1;
+}
+
+.dotes.active {
+  background-color: #969696;
+  width: 11px;
+  height: 45px;
+  border-radius: 31px;
+  transform: rotate(90deg);
+  margin: 0 1rem;
+  z-index: 2;
+}

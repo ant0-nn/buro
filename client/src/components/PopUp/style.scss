@@ -1,0 +1,235 @@
+.popUp {
+  background-image: url(./img/Bg.png);
+  background-size: cover;
+  padding: 4rem 0;
+  &-title {
+    font-family: 'Kyiv Region', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 46px;
+    background-color: #BF1616;
+    color: white;
+    text-align: center;
+    padding: 1.65rem 0;
+    text-transform:uppercase;
+    @media (max-width: 768px) {
+      font-size: 35px;
+    }
+    @media (max-width: 568px) {
+      font-size: 35px;
+      text-align: left;
+      width: 100%;
+      padding: 10px 5%;
+    }
+  }
+
+  &-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: normal;
+    color: white;
+    width: 675px;
+    margin: 1.87rem auto 3.13rem;
+    @media (max-width: 768px) {
+      width: auto;
+      font-size: 20px;
+    }
+    @media (max-width: 568px) {
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 480px) {
+    .container{
+      padding: 1rem;
+    }
+  }
+  &-wrapper {
+    position: relative;
+    background: #fff;
+    padding: 40px 50px;
+    display: flex;
+    width: 675px;
+    height: auto;
+    flex-direction: column;
+    margin: 0 auto;
+    max-height: 100vh;
+    @media (max-width: 768px) {
+      padding: 35px 40px;
+      width: 90%;
+      max-height: 200vh;
+    }
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+    &--closeButton {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      border-radius: 50%;
+
+      &:hover {
+        background-color: #BF1616;
+        & path {
+          stroke: #FFFFFF;
+        }
+        & circle {
+          stroke: #FFFFFF;
+        }
+      }
+    }
+    &__label {
+      display: grid;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 27px;
+      margin-top: 30px;
+      gap: 1rem;
+      width: 100%;
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
+      @media (max-width: 568px) {
+        margin-top: 15px;
+        font-size: 16px;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+      & input {
+        width: 100%;
+        font-size: 20px;
+        border-radius: 11px;
+        padding: 30px 40px;
+        height: 48px;
+        border: 1px solid black;
+        @media (max-width: 768px) {
+
+        }
+        @media (max-width: 480px) {
+          padding: 0 20px;
+          height: 36px;
+        }
+      }
+      & select {
+        width: 100%;
+        height: 65px;
+        border-radius: 11px;
+        padding: 8px 40px;
+
+        font-size: 20px;
+        @media (max-width: 568px) {
+          padding: 8px 20px;
+        }
+        @media (max-width: 480px) {
+          height: 36px;
+          padding: 0 20px;
+          font-size: 15px;
+        }
+      }
+    }
+    &__text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 27px;
+      letter-spacing: 0em;
+      text-align: left;
+      align-self: baseline;
+      margin-top: 30px;
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
+      @media (max-width: 568px) {
+        margin-top: 15px;
+        font-size: 14px;
+      }
+    }
+    &__radio-label {
+      display: grid;
+      grid-template-columns: 0.08fr 1fr;
+      align-items: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      flex-direction: row;
+      height: 4rem;
+      margin: 0;
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+      @media (max-width: 568px) {
+        height: 2rem;
+        font-size: 16px;
+      }
+      & input{
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0;
+        @media (max-width: 768px) {
+          height: 1.25rem;
+        }
+        @media (max-width: 568px) {
+          height: 1rem;
+        }
+        &:checked{
+          accent-color: #bf1616;
+          border: 2px solid #BF1631;
+          border-radius: 50%;
+        }
+      }
+    }
+    &__button {
+      background-color: #BF1616;
+      color: #FFFBF6;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 29px;
+      text-align: center;
+      width: 100%;
+      height: 5rem;
+      opacity: 1;
+      margin-top: 2.5rem;
+      border: none;
+      transition: 0.35s;
+      @media (max-width: 768px) {
+        margin-top: 1.5rem;
+      }
+      @media (max-width: 568px) {
+        margin-top: 1rem;
+      }
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+  }
+
+}
+.flag-dropdown {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.react-tel-input .selected-flag:hover,
+.react-tel-input .selected-flag:focus {
+  background-color: transparent !important;
+}
+
+.react-tel-input .form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.react-tel-input .form-control {
+  width: 100%;
+}
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background:  transparent !important;
+  border-radius: 3px 0 0 0;
+}
+.react-tel-input .selected-flag:hover, .react-tel-input .selected-flag:focus {
+  background-color: transparent !important;
+}

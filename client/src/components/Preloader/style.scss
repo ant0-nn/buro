@@ -1,0 +1,34 @@
+.preloader {
+  position: fixed;
+  z-index: 9997;
+  width: 100%;
+  height: 100vh;
+  background: #FFFFFF;
+  &-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+  }
+  &__logo {
+    position: relative;
+    display: block;
+    z-index: 9999;
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 25%;
+    animation: blinkAnimation 1s infinite alternate;
+  }
+  @keyframes blinkAnimation {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+}
