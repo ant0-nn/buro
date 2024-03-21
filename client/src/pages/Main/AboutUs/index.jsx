@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState } from 'react';
 import './style.scss';
 import logoImg from '../../../img/ornament.svg';
-import firstPhoto from './img/IMG_0969.jpg';
+import firstPhoto from './img/1.png';
 import firstGridPhoto from './img/photo2.png';
 import secondGridPhoto from './img/photo1.png';
 import thirdGridPhoto from './img/photo4.png';
@@ -81,12 +81,7 @@ function AboutUs() {
       <div className="container">
         <div className="section-grid">
           <div className="section-grid__container--photo">
-            <img
-              loading="lazy"
-              src={windowWidth <= 1023 ? fifthGridPhoto : firstPhoto}
-              alt="f"
-              className="section-grid--photo"
-            />
+            <img loading="lazy" src={firstPhoto} alt="f" className="section-grid--photo" />
           </div>
           <p className="section-grid--bureaux">
             <span>BureauX (Бюро Ікс)</span> – бюро архітектури та дизайну, засновниками якого є
@@ -217,7 +212,7 @@ function AboutUs() {
           </div>
           <div className="wrapper-number">
             <span className="container1-number box4">04</span>
-            {windowWidth > 480 && windowWidth <= 1024 && (
+            {windowWidth <= 1024 && (
               <img
                 loading="lazy"
                 src={fifthGridPhoto}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import {useState, useEffect, useMemo, useCallback, useRef} from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjects, selectProjects, selectLoading } from '../../../store/fuatures/ProjectSlice';
@@ -28,16 +28,17 @@ const First = () => {
   const backgroundImageUrls = useMemo(() => [bg1, bg2, bg3, bg4, bg5], []);
 
   const backgroundImageUrl = backgroundImageUrls[currentPhotoIndex];
-  
+
   useEffect(() => {
     dispatch(fetchProjects());
   }, [dispatch]);
-  
+
   useEffect(() => {
     const preloadImage = new Image();
     preloadImage.src = backgroundImageUrl;
     preloadImage.onload = () => {
       document.querySelector('.First').style.backgroundImage = `url(${backgroundImageUrl})`;
+      document.querySelector('.First').style.backgroundSize = `cover`;
       setBackgroundLoaded(true);
     };
   }, [backgroundImageUrl]);
@@ -48,9 +49,14 @@ const First = () => {
     }
   }, [backgroundImageUrls, backgroundLoaded]);
 
+  const resetTimer = useCallback(() => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(goToNextPhoto, 10000);
+  }, [goToNextPhoto]);
+
   useEffect(() => {
-    const interval = setInterval(goToNextPhoto, 10000);
-    return () => clearInterval(interval);
+    intervalRef.current = setInterval(goToNextPhoto, 10000);
+    return () => clearInterval(intervalRef.current);
   }, [goToNextPhoto]);
 
   const [dotsVisible, setDotsVisible] = useState(false);
@@ -58,8 +64,16 @@ const First = () => {
   const toggleDotsVisibility = () => {
     setDotsVisible(!dotsVisible);
   };
-  
-  
+
+  const handleDotClick = (index) => {
+    if (backgroundLoaded) {
+      setCurrentPhotoIndex(index);
+      resetTimer();
+    }
+  };
+
+
+const intervalRef = useRef(null);
   return (
     <section className="First" id="First" style={{ ...projectsWrapperStyle }}>
       <div className="container">
@@ -72,7 +86,8 @@ const First = () => {
             {backgroundImageUrls.map((_, index) => (
               <span
                 key={index}
-                className={`dotes ${index === currentPhotoIndex ? 'active' : ''}`}></span>
+                className={`dotes ${index === currentPhotoIndex ? 'active' : ''}`}
+                onClick={() => handleDotClick(index)}></span>
             ))}
           </div>
           {!location.pathname.includes('/projects') && (
@@ -91,7 +106,7 @@ const First = () => {
                       alt=""
                     />
                     <div className="First__projects--container">
-                      <span className="First__projects--number">{item.id - 8}</span>
+                      <span className="First__projects--number">{item.id}</span>
                       <p className="First__projects--title">{item.name}</p>
                       <p className="First__projects--square">{item.square}</p>
                     </div>
