@@ -9,11 +9,11 @@
     overflow: hidden;
     &-header {
       display: grid;
-      grid-template-columns: .1fr .7fr .4fr 0.1fr;
+      grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
       grid-template-rows: 0.5fr 0.5fr;
       padding-top: 5rem;
       margin-bottom: 3rem;
-  
+      column-gap: 65px;
       &--title {
         white-space: nowrap;
         font-family: 'Kyiv Region', sans-serif;
@@ -65,7 +65,7 @@
     }
   
     &-container {
-      width: 56rem;
+      width: 800px;
       margin: 0 auto;
       &__elements{
         display: grid;
@@ -91,10 +91,6 @@
         .image-3{
           grid-row: 3;
           grid-column: 3;
-        }
-        &--image:nth-child(4){
-          grid-column: 3;
-          grid-row: 3;
         }
         &--square{
           width: 58px;
@@ -285,7 +281,7 @@
           width: auto;
         }
         &--info {
-  display: none
+          display: none
         }
       }
       &-svg{

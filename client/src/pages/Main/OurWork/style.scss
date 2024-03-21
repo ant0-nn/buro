@@ -29,7 +29,7 @@
   }
   &-container{
     display: grid;
-    grid-template-columns: 0.5fr 0.2fr 0.5fr;
+    grid-template-columns: 1fr 0.2fr 1fr;
     &--logo{
       width: 80px;
       opacity: 0.7;
@@ -157,10 +157,10 @@
   background-color: rgba(255,255,255, 0.1);
   border: 3px solid #BF1616;
   border-radius: 50px;
-  width: 3rem;
+  width: 48px;
   text-align: center;
-  height: 3rem;
-  line-height: 40px;
+  height: 48px;
+  line-height: 44px;
   z-index: 99;
 
 }
