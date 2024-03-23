@@ -320,10 +320,13 @@
     }
   }
 }
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 480px) {
   .founders {
     overflow: hidden;
-    height: 240vh;
+    height: 1800px;
+    @media screen and (max-width: 420px){
+    height: 1700px;
+    }
     &-content{
       grid-template-rows: 200px 1fr;
       grid-template-columns: 100%;
