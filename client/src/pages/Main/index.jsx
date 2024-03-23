@@ -18,13 +18,13 @@ function Main() {
         <>
            <PretLoader/>
           <First />
-          {/*<AboutUs />*/}
-          {/*<Founders />*/}
-          {/*<OurProjects />*/}
-          {/*<Services />*/}
-          {/*<OurWork />*/}
-          {/*<FAQs />*/}
-          {/*<Reviews />*/}
+          <AboutUs />
+          <Founders />
+          <OurProjects />
+          <Services />
+          <OurWork />
+          <FAQs />
+          <Reviews />
         </>
       );
 }
