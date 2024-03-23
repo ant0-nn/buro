@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   getProjectById,
-  selectLoading,
   selectProjectById,
 } from '../../store/fuatures/ProjectSlice';
 import Header from '../../components/Header';
@@ -19,7 +18,6 @@ const ProjectInfo = () => {
   const project = useSelector((state) => selectProjectById(state, id));
   const [showSlider, setShowSlider] = useState(false);
   const [sliderIndex, setSliderIndex] = useState(0);
-  const loading = useSelector(selectLoading);
 
 
   useEffect(() => {
@@ -37,27 +35,11 @@ const ProjectInfo = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setShownPhotosCount(16);
-  //   setTimeout(() => setLoading(false), 500);
-  // }, [projectId]);
-
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, [shownPhotosCount]);
-
+  
   const handleLoadMorePhotos = (event) => {
     event.stopPropagation();
     setShownPhotosCount((prevCount) => prevCount + 16);
   };
-
-  // if (projectIndex === -1) {
-  //   return <div>Проект не найден</div>;
-  // }
-
-  // const project = projects[projectIndex];
 
   let projectBlockInfoStyle = {};
 
@@ -83,9 +65,9 @@ const ProjectInfo = () => {
 
   return (
     <div className="project-container">
+      <Preloader />
       <Header />
-      <Preloader loading={project}  />
-      {project !== null && !loading && (
+      {project !== null && (
         <div className="project-container__info" style={projectBlockInfoStyle}>
           <div className="project-container__intro">
             <div className="project-container__wrapper">
@@ -102,7 +84,7 @@ const ProjectInfo = () => {
       <div className="project-container__photo">
         <div className="container">
           <Buttons />
-          {project !== null && !loading && (
+          {project !== null && (
             <div className="project-info">
               {project.images.slice(0, shownPhotosCount).map((item, i) => (
                 <div
@@ -123,7 +105,7 @@ const ProjectInfo = () => {
               ))}
             </div>
           )}
-          {project !== null && !loading && shownPhotosCount < project.images.length && (
+          {project !== null && shownPhotosCount < project.images.length && (
             <button className="project-info__load-more" onClick={handleLoadMorePhotos}>
               Показати більше
             </button>

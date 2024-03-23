@@ -1,9 +1,13 @@
 .preloader {
   position: fixed;
   z-index: 9997;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &-container {
     position: absolute;
     top: 0;
@@ -13,16 +17,21 @@
     height: 100vh;
     backdrop-filter: blur(10px);
   }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Нове: розтягніть контейнер по висоті батьківського елемента */
+  }
+
   &__logo {
     position: relative;
-    display: block;
-    z-index: 9999;
     width: 300px;
     height: auto;
-    margin: 0 auto;
-    padding-top: 25%;
     animation: blinkAnimation 1s infinite alternate;
   }
+
   @keyframes blinkAnimation {
     0% {
       opacity: 1;

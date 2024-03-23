@@ -4,33 +4,34 @@ import { inject } from '@vercel/analytics';
 import Preloader from './components/Preloader/index.jsx';
 import { ToastContainer } from 'react-toastify';
 import Cursor from './components/Cursor/index';
-import Main from './pages/Main/index.jsx';
+import Header from "./components/Header/index.jsx";
+import Footer from "./components/Footer/index.jsx";
+import PopUp from "./components/PopUp/index.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/style.scss';
 
-const Footer = lazy(() => import('./components/Footer/index.jsx'));
-const Header = lazy(() => import('./components/Header/index.jsx'));
-const PopUp = lazy(() => import('./components/PopUp/index.jsx'));
+const Main = lazy(() => import('./pages/Main/index.jsx'))
 const MoreOurProjects = lazy(() => import('./pages/MoreOurProjects/index.jsx'));
 const ProjectsInfo = lazy(() => import('./pages/ProjectsInfoPage/index.jsx'));
 
 function App() {
-      return (
+    return (
+        <Suspense fallback={<Preloader/>}>
             <Router>
-                    <Cursor />
-                    <Header />
-                    <Suspense fallback={<Preloader />}>
-                        <Routes>
-                            <Route exact path="/" element={<Main />} />
-                            <Route path="/projects" element={<MoreOurProjects />} />
-                            <Route path="/projects/info/:id" element={<ProjectsInfo />} />
-                        </Routes>
-                    </Suspense>
-                    <PopUp />
-                    <Footer />
-                    <ToastContainer />
+                <Cursor />
+                <Header />
+                <Routes>
+                    <Route exact path="/" element={<Main />} />
+                    <Route path="/projects" element={<MoreOurProjects />} />
+                    <Route path="/projects/info/:id" element={<ProjectsInfo />} />
+                </Routes>
+                <PopUp />
+                <Footer />
+                <ToastContainer />
             </Router>
-      );
+        </Suspense>
+    
+    );
 }
 
 inject();
