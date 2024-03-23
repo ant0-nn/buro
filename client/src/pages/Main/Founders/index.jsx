@@ -83,7 +83,7 @@ function Founders() {
               <div className="founders-container" key={founder.id}>
                 <img loading="lazy" src={founder.image} alt="img" />
                 <div className="founders-container--ornament">
-                  <img loading="lazy" src={tabletOr} alt="" />
+                  <img loading="lazy" src={tabletOr} alt=""  />
                 </div>
                 <p className="founders-container--name">{founder.name}</p>
                 <h4 className="founders-container--title">{founder.title}</h4>

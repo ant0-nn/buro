@@ -102,7 +102,7 @@ function OurProjects() {
   }, [maxLogosInRow, windowWidth]);
 
   const logos = Array.from({ length: maxLogosInRow }).fill(imageMap.logo);
-
+  console.log(maxLogosInRow);
   return (
       <section className="ourProjects" id="Projects">
         <div className="ourProjects-header" ref={containerRef}>

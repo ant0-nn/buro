@@ -260,6 +260,7 @@
       &-header {
         grid-template-columns: 0.9fr 0.5fr;
         padding: 3rem 0 0 2rem;
+        column-gap: 0;
         @media (max-width: 810px){
           grid-template-columns: 0.9fr 0.3fr;
         }
@@ -335,7 +336,7 @@
       }
     }
   }
-  @media (max-width: 480px) {
+  @media (max-width: 568px) {
     .ourProjects {
       padding-bottom: 0.5rem;
       &-header {
