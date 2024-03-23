@@ -101,10 +101,9 @@
     }
 
     &--conclusion {
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 18px;
       font-weight: 400;
-      line-height: 22px;
+      line-height: 30px;
       width: 100%;
       height: 100%;
       margin: 0;
@@ -121,7 +120,6 @@
         top: 24px;
         left: 8px;
         font-size: 48px;
-        font-family: "Montserrat", serif;
         line-height: 58.51px;
       }
 
@@ -151,7 +149,6 @@
   &-number {
     width: 100%;
     height: 100%;
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 80px;
     font-weight: 600;
     line-height: 155px;
@@ -162,20 +159,16 @@
   }
 
   &-title {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 28px;
     font-weight: 600;
     line-height: 27px;
-    padding-left: 1rem;
   }
 
   &-info {
     align-self: center;
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 18px;
     font-weight: 400;
     line-height: 22px;
-    padding-left: 1rem;
     margin-top: 1.5rem;
   }
 
@@ -202,7 +195,6 @@
 }
 
 .title {
-  font-family: 'Kyiv Region', sans-serif;
   font-size: 80px;
   font-weight: 700;
   line-height: 80px;
@@ -365,7 +357,6 @@
         font-weight: 500;
         line-height: normal;
         letter-spacing: 2.8px;
-        margin-top: 0.5rem;
       }
 
       &--logo:first-child {
