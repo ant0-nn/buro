@@ -27,11 +27,11 @@ function Top() {
 
       if (windowWidth <= 480) {
         maxLogosInRow = Math.floor((containerWidth - titleWidth) / LOGO_WIDTHS.small);
-        maxLogosInRow = Math.min(maxLogosInRow, 5);
+        maxLogosInRow = Math.min(maxLogosInRow, 9);
         logoWidth = LOGO_WIDTHS.small;
       } else if (windowWidth <= 1023) {
         maxLogosInRow = Math.floor((containerWidth - titleWidth) / LOGO_WIDTHS.medium);
-        maxLogosInRow = Math.min(maxLogosInRow, 9);
+        maxLogosInRow = Math.min(maxLogosInRow, 12);
         logoWidth = LOGO_WIDTHS.medium;
       } else {
         const textWidth = textRef.current.getBoundingClientRect().width;
