@@ -67,8 +67,8 @@ function MoreOurProjects() {
   };
   return (
       <section className="moreOurProjects">
-        <First />
         <Preloader />
+        <First />
         <div className="moreOurProjects-section">
           <div className="moreOurProjects__info">
             <h2 className="moreOurProjects__title">Наші проєкти</h2>

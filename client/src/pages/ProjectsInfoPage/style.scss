@@ -25,7 +25,6 @@
   &__title {
     padding-top: 57px;
     text-align: center;
-    font-family: 'Kyiv Region', sans-serif;
     font-size: 48px;
     font-style: normal;
     font-weight: 700;
@@ -48,7 +47,6 @@
   }
   &__subtitle {
     color: #FFF;
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -111,6 +109,7 @@
     display: block;
     color: white;
     margin: 0 auto;
+    font-weight: 500;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -152,8 +151,6 @@
     }
     & span {
       position: relative;
-
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 24px;
       font-style: normal;
       font-weight: 400;

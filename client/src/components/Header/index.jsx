@@ -14,8 +14,7 @@ function Header() {
     const [isInfoPage, setIsInfoPage] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
-
-    console.log(isScrolled);
+    
     useEffect(() => {
         if (location.pathname.startsWith('/projects/info/')) {
         setIsInfoPage(true);

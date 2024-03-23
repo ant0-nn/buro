@@ -3,7 +3,6 @@
   background-size: cover;
   padding: 4rem 0;
   &-title {
-    font-family: 'Kyiv Region', sans-serif;
     font-size: 48px;
     font-weight: 500;
     line-height: 46px;
@@ -24,7 +23,6 @@
   }
 
   &-text {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 28px;
     font-weight: 500;
     line-height: normal;
@@ -80,7 +78,6 @@
     }
     &__label {
       display: grid;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 22px;
       font-weight: 500;
       line-height: 27px;
@@ -130,11 +127,9 @@
       }
     }
     &__text {
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 22px;
       font-weight: 500;
       line-height: 27px;
-      letter-spacing: 0em;
       text-align: left;
       align-self: baseline;
       margin-top: 30px;
@@ -150,7 +145,6 @@
       display: grid;
       grid-template-columns: 0.08fr 1fr;
       align-items: center;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 20px;
       font-weight: 400;
       line-height: 24px;
@@ -184,7 +178,6 @@
     &__button {
       background-color: #BF1616;
       color: #FFFBF6;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 24px;
       font-weight: 400;
       line-height: 29px;

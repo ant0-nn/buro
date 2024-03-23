@@ -1,13 +1,5 @@
 @import "../../styles/variables";
 
-* {
-  box-sizing: border-box;
-  list-style-type: none;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-}
-
 .header {
   position: fixed;
   left: 0;
@@ -109,7 +101,6 @@
 
       &__link {
         color: $white-color;
-        font-family: "IBM Plex Mono", monospace;
         font-size: 18px;
         font-style: normal;
         font-weight: 500;
@@ -119,7 +110,6 @@
 
       & span {
         color: $white-color;
-        font-family: "IBM Plex Mono", monospace;
         font-size: 18px;
         font-style: normal;
         font-weight: 500;
@@ -153,7 +143,6 @@
     padding: 15px;
     background: $main-color;
     color: $white-color;
-    font-family: "IBM Plex Mono", monospace;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;

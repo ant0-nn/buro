@@ -7,6 +7,9 @@
   transition: background-image 2.2s ease-in-out;
   transition-delay: 0.5s;
   image-rendering: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &::before{
     content: '';
     position: absolute;
@@ -18,13 +21,16 @@
   @media (max-width: 480px) {
     height: 30rem;
   }
+  &-content {
+
+  }
   &__info {
     padding-top: 122px;
     display: grid;
     justify-content: center;
     z-index: 100;
     @media (max-width: 992px) {
-      padding: 122px 30px 0;
+      padding: 270px 30px 0;
     }
   }
 
@@ -38,7 +44,6 @@
 
   &__title {
     color: #FFF;
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -60,7 +65,7 @@
     justify-content: center;
     z-index: 100;
     @media (max-width: 992px) {
-      padding-top: 90px;
+      padding-top: 50px;
       flex-direction: column;
     }
 
@@ -68,7 +73,6 @@
       z-index: 100;
       transform: rotate(-90deg);
       color: #FFF;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
@@ -151,7 +155,6 @@
       color: white;
       width: 1.25rem;
       height: 1.25rem;
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       font-weight: 600;
       line-height: 19px;
@@ -169,7 +172,6 @@
     }
 
     &--title {
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 10px;
       font-weight: 600;
       line-height: 11px;
@@ -180,7 +182,6 @@
     }
 
     &--square {
-      font-family: 'IBM Plex Mono', monospace;
       font-size: 9px;
       font-weight: 400;
       line-height: 9px;

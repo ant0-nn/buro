@@ -6,7 +6,7 @@ import { scroller } from 'react-scroll';
 
 import './style.scss';
 
-function Footer() {
+const Footer = () => {
   const location = useLocation();
   
   const handleClick = (elementId) => {
@@ -41,7 +41,7 @@ function Footer() {
                   offset={-70}
                   duration={500}
                   className="footer-logo">
-                <img loading="lazy" src={logo} alt="Bureaux" />
+                <img  src={logo} alt="Bureaux" />
               </Link>
               <span className="footer-info--item">Design & Architecture</span>
               <span className="footer-info--item">Україна, Київ</span>

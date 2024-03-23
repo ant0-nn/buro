@@ -7,6 +7,7 @@ import Cursor from './components/Cursor/index';
 import Header from "./components/Header/index.jsx";
 import Footer from "./components/Footer/index.jsx";
 import PopUp from "./components/PopUp/index.jsx";
+import PhonePopUp from "./components/PhonePopUp/index.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/style.scss';
 
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/projects/info/:id" element={<ProjectsInfo />} />
                 </Routes>
                 <PopUp />
+                <PhonePopUp />
                 <Footer />
                 <ToastContainer />
             </Router>

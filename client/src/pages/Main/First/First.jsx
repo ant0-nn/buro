@@ -1,25 +1,21 @@
 import {useState, useEffect, useMemo, useCallback, useRef} from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProjects, selectProjects, selectLoading } from '../../../store/fuatures/ProjectSlice';
+import { fetchProjects, selectProjects } from '../../../store/fuatures/ProjectSlice';
 import Logo from '../../../img/white-logo.png';
 import './first.scss';
-// import { projects } from '../../../data/projects';
 import MoreProject from '../../../components/MoreProject/MoreProject';
-import PhonePopUp from '../../../components/PhonePopUp';
 import bg1 from './img/bg.png';
 import bg2 from './img/bg2.png';
 import bg3 from './img/bg3.png';
 import bg4 from './img/bg4.png';
 import bg5 from './img/bg5.png';
-import Preloader from "../../../components/Preloader/index.jsx";
 
 const First = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
   const newProjects = projects.filter((project) => project.section === 'new');
-  // const newProjects = projects.filter((project) => project.section === 'new');
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   const projectsWrapperStyle =
@@ -118,7 +114,6 @@ const intervalRef = useRef(null);
           )}
         </div>
       </div>
-      <PhonePopUp />
     </section>
   );
 };
