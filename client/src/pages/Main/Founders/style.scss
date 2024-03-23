@@ -92,7 +92,7 @@
     row-gap: 14px;
     background-color: #FFFBF6;
     height: 100%;
-    padding: 20px 0 10px 20px;
+    padding: 27px 0 10px 16px;
     overflow: hidden;
     //@media screen and (min-width: 1680px) {
     //  height: 95vh;
@@ -320,10 +320,13 @@
     }
   }
 }
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 480px) {
   .founders {
     overflow: hidden;
-    height: 240vh;
+    height: 1800px;
+    @media screen and (max-width: 420px){
+    height: 1700px;
+    }
     &-content{
       grid-template-rows: 200px 1fr;
       grid-template-columns: 100%;
