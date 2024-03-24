@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import  { useState, useEffect, useMemo, useCallback } from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjects, selectProjects } from '../../store/fuatures/ProjectSlice';
@@ -14,8 +13,11 @@ function MoreOurProjects() {
   const projects = useSelector(selectProjects);
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isHovered, setIsHovered] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState('Всі проекти');
-  console.log("rendering page");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const typeParam = searchParams.get('type');
+  const [selectedFilter, setSelectedFilter] = useState(typeParam || 'Всі проекти');
   
   useEffect(() => {
     dispatch(fetchProjects());
@@ -56,7 +58,10 @@ function MoreOurProjects() {
       setFilteredProjects(filtered);
       setIsHovered(false);
     }
-  }, [projects, filterOptions]);
+    
+    // Зміна URL з додаванням #residential
+    navigate(`/projects?filter=${filterType}`);
+  }, [projects, filterOptions, navigate]);
   
   const handleHovered = useCallback(() => {
     setIsHovered(prevState => !prevState);

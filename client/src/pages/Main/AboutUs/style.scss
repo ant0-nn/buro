@@ -70,13 +70,14 @@
 
     &--bureaux {
       font-size: 20px;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 35px;
       grid-column-start: 2;
       grid-column-end: 4;
       justify-self: center;
 
       & span {
+        font-weight: 500;
         color: white;
         background-color: #BF1616;
         border: 2px solid #BF1616;
@@ -88,11 +89,12 @@
       grid-column-start: 2;
       grid-column-end: 4;
       font-size: 20px;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 35px;
       justify-self: center;
 
       & span {
+        font-weight: 500;
         color: white;
         background-color: #BF1616;
         border: 2px solid #BF1616;

@@ -28,7 +28,6 @@
         font-size: 18px;
         font-weight: 400;
         line-height: 22px;
-        letter-spacing: 0em;
         text-align: left;
         width: 418px;
         @media (max-width: 1228px){
@@ -40,7 +39,6 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 22px;
-        letter-spacing: 0em;
         text-align: left;
         color: #BF1616;
         grid-row: 2;
@@ -49,7 +47,6 @@
           font-size: 18px;
           font-weight: 700;
           line-height: 22px;
-          letter-spacing: 0em;
           text-align: left;
         }
       }
@@ -137,7 +134,6 @@
             font-size: 24px;
             font-weight: 600;
             line-height: 44px;
-            letter-spacing: 0em;
             align-self: end;
             white-space: nowrap;
           }
@@ -145,7 +141,6 @@
             font-size: 24px;
             font-weight: 400;
             line-height: 29px;
-            letter-spacing: 0em;
             text-align: start;
             color: white;
   
@@ -195,7 +190,6 @@
       font-size: 25px;
       font-weight: 500;
       line-height: 24px;
-      letter-spacing: 0em;
       text-align: left;
       background-color: #BF1616;
       color: white;
@@ -330,7 +324,6 @@
         grid-template-columns: 1fr 0.3fr;
         padding: 2rem 0 0 1rem;
         &--title {
-          margin-top: 0.5rem;
           font-size: 9vw;
           font-style: normal;
           font-weight: 500;
