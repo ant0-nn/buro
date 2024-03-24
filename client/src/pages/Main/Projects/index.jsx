@@ -16,6 +16,7 @@ import logoImg from '../../../img/ornament.svg';
 const FullImage = [
   {
     id: 2,
+    idView: 1,
     image: image5,
     fullImage: image1,
     name: 'UA PROJECT',
@@ -23,6 +24,7 @@ const FullImage = [
   },
   {
     id: 1,
+    idView: 2,
     image: image6,
     fullImage: image2,
     name: 'METROPOLIS',
@@ -30,6 +32,7 @@ const FullImage = [
   },
   {
     id: 3,
+    idView: 3,
     image: image7,
     fullImage: image3,
     name: '1991 BEAUTY SALON',
@@ -37,6 +40,7 @@ const FullImage = [
   },
   {
     id: 5,
+    idView: 4,
     image: image8,
     name: 'GUNIA',
     fullImage: image4,
@@ -102,7 +106,6 @@ function OurProjects() {
   }, [maxLogosInRow, windowWidth]);
 
   const logos = Array.from({ length: maxLogosInRow }).fill(imageMap.logo);
-  console.log(maxLogosInRow);
   return (
       <section className="ourProjects" id="Projects">
         <div className="ourProjects-header" ref={containerRef}>
@@ -233,7 +236,7 @@ function OurProjects() {
                       to={`/projects/info/${item.id}`}
                       className={`ourProjects-container__elements--staticImage staticImage-${index}`}
                       style={{ backgroundImage: `url(${item.fullImage})` }}>
-                    <p> 0{item.id + 1}</p>
+                    <p> 0{item.idView}</p>
                     <p> {item.name}</p>
                     <p> {item.square} м. кв.</p>
                   </Link>

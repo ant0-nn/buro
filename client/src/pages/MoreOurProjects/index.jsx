@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ function MoreOurProjects() {
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState('Всі проекти');
+  console.log("rendering page");
   
   useEffect(() => {
     dispatch(fetchProjects());
@@ -24,7 +25,7 @@ function MoreOurProjects() {
     setFilteredProjects(projects);
   }, [projects]);
   
-  const filterOptions = [
+  const filterOptions = useMemo(() => [
     {
       type: "all",
       name: "Всі проекти"
@@ -41,9 +42,9 @@ function MoreOurProjects() {
       type: "architecture",
       name: "Архітектура та будівництво"
     },
-  ];
+  ], []);
   
-  const typeFilter = (filterType) => {
+  const typeFilter = useCallback((filterType) => {
     const selectedFilterObj = filterOptions.find(option => option.type === filterType);
     setSelectedFilter(selectedFilterObj ? selectedFilterObj.name : 'Всі проекти');
     setIsHovered(false);
@@ -55,16 +56,17 @@ function MoreOurProjects() {
       setFilteredProjects(filtered);
       setIsHovered(false);
     }
-  };
+  }, [projects, filterOptions]);
   
-  const handleHovered = () => {
-    setIsHovered(!isHovered);
-  };
+  const handleHovered = useCallback(() => {
+    setIsHovered(prevState => !prevState);
+  }, []);
   
-  const chevronRotationStyle = {
+  const chevronRotationStyle = useMemo(() => ({
     transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
     transition: 'transform 0.3s ease', // Додайте плавну анімацію
-  };
+  }), [isHovered]);
+  
   return (
       <section className="moreOurProjects">
         <Preloader />
