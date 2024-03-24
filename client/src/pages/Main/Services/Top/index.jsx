@@ -73,7 +73,7 @@ function Top() {
         Послуги
       </h2>
       {paragraph}
-      {logos.slice(0, logos.length - 2).map((logo, index) => (
+      {logos.slice(0, logos.length -1 ).map((logo, index) => (
         <img loading="lazy" src={logo} alt="#" className="section-container--logos" key={index} />
       ))}
     </section>
