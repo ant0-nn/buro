@@ -365,7 +365,7 @@
         font-weight: 500;
         line-height: normal;
         letter-spacing: 2.8px;
-        margin-top: 0.5rem;
+        //margin-top: 0.5rem;
       }
 
       &--logo:first-child {
@@ -426,8 +426,7 @@
   .section-container--title {
     padding-left: 1rem;
     font-size: 37px;
-    line-height: 5rem;
-    width: 14rem;
+    line-height: 45px;
   }
 
   .section-grid {
@@ -482,7 +481,8 @@
   .logo-containers {
     left: 17rem;
     @media screen and (max-width: 393px) {
-      left: 14rem;
+      left: 55%;
+      gap: 7px;
     }
   }
   .logo-container {
