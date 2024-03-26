@@ -1,5 +1,5 @@
 import {useState, useEffect, useMemo, useCallback, useRef} from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjects, selectProjects } from '../../../store/fuatures/ProjectSlice';
 import Logo from '../../../img/white-logo.png';
@@ -12,14 +12,11 @@ import bg4 from './img/bg4.png';
 import bg5 from './img/bg5.png';
 
 const First = () => {
-  const location = useLocation();
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
   const newProjects = projects.filter((project) => project.section === 'new');
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
-  const projectsWrapperStyle =
-    location.pathname === '/projects' ? { paddingBottom: '2rem', height: '40rem' } : {};
 
   const backgroundImageUrls = useMemo(() => [bg1, bg2, bg3, bg4, bg5], []);
 
@@ -71,7 +68,7 @@ const First = () => {
 
 const intervalRef = useRef(null);
   return (
-    <section className="First" id="First" style={{ ...projectsWrapperStyle }}>
+    <section className="First" id="First" >
       <div className="container">
         <div className="First-content">
           <div className="First__info">
@@ -86,7 +83,6 @@ const intervalRef = useRef(null);
                 onClick={() => handleDotClick(index)}></span>
             ))}
           </div>
-          {!location.pathname.includes('/projects') && (
             <div className="First__projects">
               <h3 className="First__projects__title">Проєкти</h3>
               <div className="First__projects__wrapper">
@@ -96,8 +92,7 @@ const intervalRef = useRef(null);
                     className="First__projects__block"
                     key={item.id}>
                     <img
-                      loading="lazy"
-                      src={`data:image/jpeg;base64,${item.mainimage}`}
+                        src={`http://139.28.37.125:8000/img/${item.mainimage}`}
                       className="First__projects__img"
                       alt=""
                     />
@@ -111,7 +106,6 @@ const intervalRef = useRef(null);
               </div>
               <MoreProject />
             </div>
-          )}
         </div>
       </div>
     </section>

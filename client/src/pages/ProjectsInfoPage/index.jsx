@@ -13,28 +13,35 @@ import Preloader from "../../components/Preloader/index.jsx";
 
 const ProjectInfo = () => {
   const [shownPhotosCount, setShownPhotosCount] = useState(16);
-  const { id } = useParams();
+  const { id: routeId } = useParams(); // Отримати id з параметрів шляху
+  const [id, setId] = useState(null);
   const dispatch = useDispatch();
   const project = useSelector((state) => selectProjectById(state, id));
   const [showSlider, setShowSlider] = useState(false);
   const [sliderIndex, setSliderIndex] = useState(0);
-
-
+  
+  
   useEffect(() => {
-    const fetchData = () => {
+    // Якщо routeId не є undefined, тоді встановлюємо його значення у стані компонента
+    if (routeId !== undefined) {
+      setId(routeId);
+    }
+  }, [routeId]); // Перевірка зміни параметрів шляху
+  
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        dispatch(getProjectById(id));
+        if (id !== null) {
+          await dispatch(getProjectById(id));
+        }
       } catch (error) {
         console.error('Error fetching project data:', error);
       }
     };
-
+    
     fetchData();
   }, [dispatch, id]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  
   
   const handleLoadMorePhotos = (event) => {
     event.stopPropagation();
@@ -45,7 +52,7 @@ const ProjectInfo = () => {
 
   if (project !== null) {
     projectBlockInfoStyle = {
-      backgroundImage: `url(data:image/jpeg;base64,${project.mainimage})`,
+      backgroundImage: `url(http://139.28.37.125:8000/img/${project.mainimage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     };
@@ -83,7 +90,7 @@ const ProjectInfo = () => {
       )}
       <div className="project-container__photo">
         <div className="container">
-          <Buttons />
+          <Buttons id={id} />
           {project !== null && (
             <div className="project-info">
               {project.images.slice(0, shownPhotosCount).map((item, i) => (
@@ -98,7 +105,7 @@ const ProjectInfo = () => {
                     loading="lazy"
                     key={i}
                     className="project-info__img"
-                    src={`data:image/jpeg;base64,${item}`}
+                    src={`http://139.28.37.125:8000/img/${item}`}
                     alt=""
                   />
                 </div>

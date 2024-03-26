@@ -1,38 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectProjects } from '../../../store/fuatures/ProjectSlice';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {fetchProjects, selectProjects} from '../../../store/fuatures/ProjectSlice';
 
 function Buttons() {
+  const dispatch = useDispatch();
   const [shownPhotosCount, setShownPhotosCount] = useState(16);
   const navigate = useNavigate();
   const { id } = useParams();
   const projects = useSelector(selectProjects);
-  const projectId = parseInt(id, 10);
-  const projectIndex = projects.findIndex((block) => block.id === projectId);
+  const [currentIndex, setCurrentIndex] = useState(0);
   
   useEffect(() => {
-    setShownPhotosCount(16);
-  }, [projectId]);
+    dispatch(fetchProjects());
+  }, [dispatch]);
+  useEffect(() => {
+    if (projects.length > 0) {
+      const projectId = parseInt(id, 10);
+      console.log(projectId)
+      if (!isNaN(projectId)) {
+        const currentIndex = projects.findIndex(project => project.id === projectId);
+        setCurrentIndex(currentIndex);
+      }
+    }
+  }, [id, projects]);
   
   const goToNextProject = () => {
-    const nextProjectIndex = (projectIndex + 1) % projects.length;
-    
-    if (projects.length > 0 && nextProjectIndex >= 0) {
-      const nextProjectId = projects[nextProjectIndex].id;
+    if (projects && projects.length > 0) {
+      const nextIndex = (currentIndex + 1) % projects.length;
+      const nextProjectId = projects[nextIndex].id;
       navigate(`/projects/info/${nextProjectId}`);
     }
   };
   
   const goToPreviousProject = () => {
-    const previousProjectIndex = (projectIndex - 1 + projects.length) % projects.length;
-    
-    if (projects.length > 0 && previousProjectIndex >= 0) {
-      const previousProjectId = projects[previousProjectIndex].id;
+    if (projects && projects.length > 0) {
+      const previousIndex = (currentIndex - 1 + projects.length) % projects.length;
+      const previousProjectId = projects[previousIndex].id;
       navigate(`/projects/info/${previousProjectId}`);
     }
   };
-  
   return (
       <div className="buttons buttons-padding">
         <div className="buttons__wrapper" onClick={goToPreviousProject}>

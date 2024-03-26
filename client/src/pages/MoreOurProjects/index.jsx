@@ -3,10 +3,10 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjects, selectProjects } from '../../store/fuatures/ProjectSlice';
-import First from '../Main/First/First';
 import Preloader from '../../components/Preloader';
 import { GoArrowUpRight } from 'react-icons/go';
 import { FaChevronDown } from "react-icons/fa";
+import Carusel from "./carusel/Carusel.jsx";
 
 function MoreOurProjects() {
   const dispatch = useDispatch();
@@ -75,15 +75,8 @@ function MoreOurProjects() {
   return (
       <section className="moreOurProjects">
         <Preloader />
-        <First />
+        <Carusel />
         <div className="moreOurProjects-section">
-          <div className="moreOurProjects__info">
-            <h2 className="moreOurProjects__title">Наші проєкти</h2>
-            <p className="moreOurProjects__subtitle">
-              У нас є можливість виконання проектів під ключ і для цього ми маємо надійних
-              підрядників, які здатні якісно закрити весь спектр необхідних послуг.
-            </p>
-          </div>
           <div className="container">
             <div className="moreOurProjects__filter-buttons">
               <div className={`moreOurProjects__dropdown ${isHovered ? 'hovered' : ''}`}>
@@ -117,7 +110,7 @@ function MoreOurProjects() {
                   >
                     <img
                         loading="lazy"
-                        src={`data:image/jpeg;base64,${project.mainimage}`}
+                        src={`http://139.28.37.125:8000/img/${project.mainimage}`}
                         alt={project.name}
                         className="moreOurProjects__block__img"
                     />
