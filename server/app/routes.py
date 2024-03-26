@@ -182,6 +182,7 @@ def getflowerswithimage():
         return jsonify({"error": str(e)}), 500
 
 
+# Добавлення фото по посиланню
 @app.route('/img/<filename>', methods=['GET'])
 def serve_image(filename):
     return send_from_directory(app.config['IMAGE_FOLDER'], filename)

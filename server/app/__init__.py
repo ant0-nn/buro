@@ -7,6 +7,7 @@ CORS(app)
 UPLOADER_FOLDER = 'image'
 app.config['UPLOAD_FOLDER'] = UPLOADER_FOLDER
 
+#підгрузка фото
 IMAGE_FOLDER = 'static/image'
 app.config['IMAGE_FOLDER'] = IMAGE_FOLDER
 
