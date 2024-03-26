@@ -1,7 +1,7 @@
 import base64
 import os
 
-from flask import jsonify, request
+from flask import jsonify, request, send_from_directory
 from app import app
 from app import sql_api as sql_api
 
@@ -46,27 +46,17 @@ def getprojectswithimage():
     try:
         projects = sql_api.get_projects()
         projects_json = []
-        image_path = "app/static/image/"
 
         for project in projects:
             images_array = []
-
-            mainimage = project[0]
             images = project[1]
-
-            with open(image_path + mainimage, 'rb') as image_file:
-                image_data = image_file.read()
-            encoded_mainimage = base64.b64encode(image_data).decode('utf-8')
 
             images = images.split(',')
             for i in images:
-                print(image_path + i)
-                with open(image_path + i, 'rb') as image_file:
-                    image_data = image_file.read()
-                images_array.append(base64.b64encode(image_data).decode('utf-8'))
+                images_array.append(i)
 
             news_with_image = {
-                'mainimage': encoded_mainimage,
+                'mainimage': project[0],
                 'images': images_array,
                 'name': project[2],
                 'square': project[3],
@@ -87,17 +77,10 @@ def getprojectswithimageprev():
     try:
         projects = sql_api.get_projects()
         projects_json = []
-        image_path = "app/static/image/"
 
         for project in projects:
-            mainimage = project[0]
-
-            with open(image_path + mainimage, 'rb') as image_file:
-                image_data = image_file.read()
-            encoded_mainimage = base64.b64encode(image_data).decode('utf-8')
-
             news_with_image = {
-                'mainimage': encoded_mainimage,
+                'mainimage': project[0],
                 'name': project[2],
                 'square': project[3],
                 'year': project[4],
@@ -118,25 +101,16 @@ def getprojectbyname():
         id = request.args.get('id')
         project = sql_api.get_project_by_name(id)
 
-        image_path = "app/static/image/"
-
         images_array = []
 
-        mainimage = project[0]
         images = project[1]
-
-        with open(image_path + mainimage, 'rb') as image_file:
-            image_data = image_file.read()
-        encoded_mainimage = base64.b64encode(image_data).decode('utf-8')
 
         images = images.split(',')
         for i in images:
-            with open(image_path + i, 'rb') as image_file:
-                image_data = image_file.read()
-            images_array.append(base64.b64encode(image_data).decode('utf-8'))
+            images_array.append(i)
 
         news_with_image = {
-            'mainimage': encoded_mainimage,
+            'mainimage': project[0],
             'images': images_array,
             'name': project[2],
             'square': project[3],
@@ -191,23 +165,11 @@ def getflowerswithimage():
     try:
         flowers = sql_api.get_flowers()
         flowers_json = []
-        image_path = "app/static/image/"
 
         for flower in flowers:
-
-            mainphoto = flower[0]
-
-            with open(image_path + mainphoto, 'rb') as image_file:
-                image_data = image_file.read()
-            encoded_mainphoto = base64.b64encode(image_data).decode('utf-8')
-
-            with open(image_path + flower[1], 'rb') as image_file:
-                image_data = image_file.read()
-            img = base64.b64encode(image_data).decode('utf-8')
-
             news_with_image = {
-                'mainphoto': encoded_mainphoto,
-                'images': img,
+                'mainphoto': flower[0],
+                'images': flower[1],
                 'name': flower[3],
                 'square': flower[2],
                 'year': flower[4],
@@ -220,3 +182,6 @@ def getflowerswithimage():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/img/<filename>', methods=['GET'])
+def serve_image(filename):
+    return send_from_directory(app.config['IMAGE_FOLDER'], filename)
