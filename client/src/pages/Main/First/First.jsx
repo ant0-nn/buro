@@ -5,11 +5,11 @@ import { fetchProjects, selectProjects } from '../../../store/fuatures/ProjectSl
 import Logo from '../../../img/white-logo.png';
 import './first.scss';
 import MoreProject from '../../../components/MoreProject/MoreProject';
-import bg1 from './img/bg.png';
-import bg2 from './img/bg2.png';
-import bg3 from './img/bg3.png';
-import bg4 from './img/bg4.png';
-import bg5 from './img/bg5.png';
+import bg1 from '../../../img/bg1.jpg';
+import bg2 from '../../../img/bg2.jpg';
+import bg3 from '../../../img/bg3.jpg';
+import bg4 from '../../../img/bg4.jpg';
+import bg5 from '../../../img/bg5.jpg';
 
 const First = () => {
   const dispatch = useDispatch();

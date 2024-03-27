@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
 import './style.scss';
-import firstFamilyPhoto from './img/3.png';
+import firstFamilyPhoto from './img/firstFamily.jpg';
 import secondFamilyPhoto from './img/family2.png';
-import foundersIvan from './img/2.png';
+import foundersIvan from './img/ivan.jpg';
 import foundersDasha from './img/IMG_0850.jpg';
 import ornament from './img/ornament.png';
 import tabletOr from './img/tabletOr.png';

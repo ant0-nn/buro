@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import './style.scss';
-import {Link} from "react-router-dom"
+import { Link, useLocation } from "react-router-dom";
 import Top from './Top/index';
 import Bottom from './Bottom/index';
 import privatImg from './img/privat.png';
-import archImg from './img/arch.png';
-import comImg from './img/com.png';
+import archImg from './img/arjpg.jpg';
+import comImg from './img/commerce.jpg';
 
 const SvgIcon = () => {
   return (
@@ -36,10 +36,16 @@ const SvgIcon = () => {
 };
 
 const Services = () => {
+    const location = useLocation();
+    
     const handleFilterSelection = (type) => {
         // Перенаправлення на сторінку з проектами з типом фільтра
         window.location.href = `/projects?type=${type}`;
     };
+    
+    // Отримання значення параметру type з URL
+    const searchParams = new URLSearchParams(location.search);
+    const typeParam = searchParams.get('type');
   return (
       <section className="services" id="Services">
         <Top />
@@ -57,7 +63,7 @@ const Services = () => {
           <div style={{ backgroundImage: `url(${comImg})` }} className="services-center-container">
             <Link to="/projects?type=commerce"
                   className="services-center-container__text"
-                  onClick={() => handleFilterSelection('commercial')}>
+                  onClick={() => handleFilterSelection('commerce')}>
               Комерційні приміщення
               <button className="services-center-container__button">
                 <SvgIcon />

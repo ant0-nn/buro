@@ -17,7 +17,6 @@ function Buttons() {
   useEffect(() => {
     if (projects.length > 0) {
       const projectId = parseInt(id, 10);
-      console.log(projectId)
       if (!isNaN(projectId)) {
         const currentIndex = projects.findIndex(project => project.id === projectId);
         setCurrentIndex(currentIndex);
@@ -38,6 +37,7 @@ function Buttons() {
       const previousIndex = (currentIndex - 1 + projects.length) % projects.length;
       const previousProjectId = projects[previousIndex].id;
       navigate(`/projects/info/${previousProjectId}`);
+      window.location.reload();
     }
   };
   return (

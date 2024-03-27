@@ -42,6 +42,10 @@ const ProjectInfo = () => {
     fetchData();
   }, [dispatch, id]);
   
+  useEffect(() => {
+    // Скидання кількості показаних фотографій при зміні проекту
+    setShownPhotosCount(16);
+  }, [project]);
   
   const handleLoadMorePhotos = (event) => {
     event.stopPropagation();

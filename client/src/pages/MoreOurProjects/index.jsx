@@ -18,6 +18,7 @@ function MoreOurProjects() {
   const searchParams = new URLSearchParams(location.search);
   const typeParam = searchParams.get('type');
   const [selectedFilter, setSelectedFilter] = useState(typeParam || 'Всі проекти');
+  console.log(selectedFilter)
   
   useEffect(() => {
     dispatch(fetchProjects());
@@ -48,15 +49,15 @@ function MoreOurProjects() {
   
   const typeFilter = useCallback((filterType) => {
     const selectedFilterObj = filterOptions.find(option => option.type === filterType);
-    setSelectedFilter(selectedFilterObj ? selectedFilterObj.name : 'Всі проекти');
+    const selectedFilterName = selectedFilterObj ? selectedFilterObj.name : 'Всі проекти';
+    setSelectedFilter(selectedFilterName);
     setIsHovered(false);
+    
     if (filterType === 'all') {
       setFilteredProjects(projects);
-      setIsHovered(false);
     } else {
       const filtered = projects.filter((project) => project.typeFilter === filterType);
       setFilteredProjects(filtered);
-      setIsHovered(false);
     }
     
     // Зміна URL з додаванням #residential
