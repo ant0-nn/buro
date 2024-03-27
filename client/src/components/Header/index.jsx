@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PopUpContainer from '../PopUp/PopUp-container/index.jsx';
-import Logo from '../../img/white-logo.png';
+import Logo from '../../img/white-logo.webp';
 import { scroller } from 'react-scroll';
 import './style.scss';
 

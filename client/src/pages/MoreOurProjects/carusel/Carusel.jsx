@@ -1,5 +1,5 @@
 import {useState, useEffect, useMemo, useCallback, useRef} from 'react';
-import Logo from '../../../img/white-logo.png';
+import Logo from '../../../img/white-logo.webp';
 import bg1 from '../../../img/bg1.jpg';
 import bg2 from '../../../img/bg2.jpg';
 import bg3 from '../../../img/bg3.jpg';

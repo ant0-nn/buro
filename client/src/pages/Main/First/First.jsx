@@ -2,7 +2,7 @@ import {useState, useEffect, useMemo, useCallback, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjects, selectProjects } from '../../../store/fuatures/ProjectSlice';
-import Logo from '../../../img/white-logo.png';
+import Logo from '../../../img/white-logo.webp';
 import './first.scss';
 import MoreProject from '../../../components/MoreProject/MoreProject';
 import bg1 from '../../../img/bg1.jpg';

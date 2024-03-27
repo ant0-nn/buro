@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import Top from './Top/index';
 import Bottom from './Bottom/index';
 import privatImg from './img/privat.png';
-import archImg from './img/arjpg.jpg';
+import archImg from './img/ar.webp';
 import comImg from './img/commerce.jpg';
 
 const SvgIcon = () => {
