@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import Logo from "../../img/black-logo.png";
+import Logo from "../../img/black-logo.webp";
 import "./style.scss"
 import { useSelector } from "react-redux";
 import { selectLoading } from "../../store/fuatures/ProjectSlice.js";

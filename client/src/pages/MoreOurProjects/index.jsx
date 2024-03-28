@@ -10,23 +10,19 @@ import Carusel from "./carusel/Carusel.jsx";
 
 function MoreOurProjects() {
   const dispatch = useDispatch();
-  const projects = useSelector(selectProjects);
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const projects = useSelector(selectProjects)
+  console.log(projects)
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const typeParam = searchParams.get('type');
-  const [selectedFilter, setSelectedFilter] = useState(typeParam || 'Всі проекти');
-  console.log(selectedFilter)
+  const params = new URLSearchParams(location.search);
+  const initialType = params.get('type') || 'all';
+  const [type, setType] = useState(initialType);
   
   useEffect(() => {
     dispatch(fetchProjects());
   }, [dispatch]);
   
-  useEffect(() => {
-    setFilteredProjects(projects);
-  }, [projects]);
   
   const filterOptions = useMemo(() => [
     {
@@ -47,26 +43,27 @@ function MoreOurProjects() {
     },
   ], []);
   
-  const typeFilter = useCallback((filterType) => {
-    const selectedFilterObj = filterOptions.find(option => option.type === filterType);
-    const selectedFilterName = selectedFilterObj ? selectedFilterObj.name : 'Всі проекти';
-    setSelectedFilter(selectedFilterName);
-    setIsHovered(false);
-    
-    if (filterType === 'all') {
-      setFilteredProjects(projects);
+  const filteredProjects = useMemo(() => {
+    if (type === 'all') {
+      return projects;
     } else {
-      const filtered = projects.filter((project) => project.typeFilter === filterType);
-      setFilteredProjects(filtered);
+      return projects.filter(project => project.typeFilter === type);
     }
-    
-    // Зміна URL з додаванням #residential
-    navigate(`/projects?filter=${filterType}`);
-  }, [projects, filterOptions, navigate]);
+  }, [type, projects]);
   
   const handleHovered = useCallback(() => {
     setIsHovered(prevState => !prevState);
   }, []);
+  const handleChange = (selectedType) => {
+    setType(selectedType);
+    navigate(`/projects?type=${selectedType}`);
+    setIsHovered(false);
+  };
+  
+  const typeWatch = () => {
+    const information = filterOptions.find(block => block.type === type)
+    return information.name
+  }
   
   const chevronRotationStyle = useMemo(() => ({
     transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -85,22 +82,33 @@ function MoreOurProjects() {
                     onClick={handleHovered}
                     className="moreOurProjects__dropdown-button"
                 >
-                  {selectedFilter} <FaChevronDown style={chevronRotationStyle}/>
+                  {typeWatch()} <FaChevronDown style={chevronRotationStyle}/>
                 </button>
                 <div className={`moreOurProjects__dropdown-content${isHovered ? ' hovered' : ''}`}>
-                  {filterOptions
-                      .filter((filter) => filter.name !== selectedFilter)
-                      .map((filter) => (
-                          <button
-                              key={filter.name}
-                              onClick={() => typeFilter(filter.type)}
-                              className="moreOurProjects__dropdown-buttons"
-                          >
-                            {filter.name}
-                          </button>
-                      ))}
+                  {filterOptions.map((filter) => (
+                      <button
+                          key={filter.name}
+                          onClick={() => handleChange(filter.type)} // Правильно передаємо тип фільтра
+                          className="moreOurProjects__dropdown-buttons"
+                      >
+                        {filter.name}
+                      </button>
+                  ))}
                 </div>
               </div>
+              {/*<div className="moreOurProjects__dropdown">*/}
+              {/*  <select*/}
+              {/*      id="filter"*/}
+              {/*      name="filter"*/}
+              {/*      value={type}*/}
+              {/*      onChange={handleChange}*/}
+              {/*      className="moreOurProjects__dropdown-button"*/}
+              {/*  >*/}
+              {/*    {filterOptions.map(option => (*/}
+              {/*        <option key={option.type} value={option.type}>{option.name}</option>*/}
+              {/*    ))}*/}
+              {/*  </select>*/}
+              {/*</div>*/}
             </div>
             <div className="moreOurProjects__wrapper">
               {filteredProjects.map((project) => (

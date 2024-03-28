@@ -36,24 +36,13 @@ const SvgIcon = () => {
 };
 
 const Services = () => {
-    const location = useLocation();
-    
-    const handleFilterSelection = (type) => {
-        // Перенаправлення на сторінку з проектами з типом фільтра
-        window.location.href = `/projects?type=${type}`;
-    };
-    
-    // Отримання значення параметру type з URL
-    const searchParams = new URLSearchParams(location.search);
-    const typeParam = searchParams.get('type');
   return (
       <section className="services" id="Services">
         <Top />
         <div className="services-center container">
           <div style={{ backgroundImage: `url(${privatImg})` }} className="services-center-container">
             <Link to="/projects?type=private"
-                  className="services-center-container__text"
-                  onClick={() => handleFilterSelection('private')}>
+                  className="services-center-container__text">
               Приватні простори
               <button className="services-center-container__button">
                 <SvgIcon />
@@ -62,8 +51,7 @@ const Services = () => {
           </div>
           <div style={{ backgroundImage: `url(${comImg})` }} className="services-center-container">
             <Link to="/projects?type=commerce"
-                  className="services-center-container__text"
-                  onClick={() => handleFilterSelection('commerce')}>
+                  className="services-center-container__text">
               Комерційні приміщення
               <button className="services-center-container__button">
                 <SvgIcon />
@@ -72,8 +60,7 @@ const Services = () => {
           </div>
           <div style={{ backgroundImage: `url(${archImg})` }} className="services-center-container">
             <Link to="/projects?type=architecture"
-                  className="services-center-container__text"
-                  onClick={() => handleFilterSelection('architecture')}>
+                  className="services-center-container__text">
               Архітектура та будівництво
               <button className="services-center-container__button">
                 <SvgIcon />

@@ -14,7 +14,7 @@ function Modal({ onClose, imageSrc, imageAlt, onPrev, onNext, isPrevDisabled, is
           <img
             loading="lazy"
             className="modal-img"
-            src={`data:image/jpeg;base64,${imageSrc}`}
+            src={`http://139.28.37.125:8000/img/${imageSrc}`}
             alt={imageAlt}
           />
           <button className="modal-arrow next" disabled={isNextDisabled} onClick={onNext}>

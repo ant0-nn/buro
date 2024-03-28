@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../img/black-logo.png';
+import logo from '../../img/black-logo.webp';
 import { Link } from 'react-scroll';
 import { useLocation } from 'react-router-dom';
 import { scroller } from 'react-scroll';
