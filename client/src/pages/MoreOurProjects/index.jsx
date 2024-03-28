@@ -96,19 +96,6 @@ function MoreOurProjects() {
                   ))}
                 </div>
               </div>
-              {/*<div className="moreOurProjects__dropdown">*/}
-              {/*  <select*/}
-              {/*      id="filter"*/}
-              {/*      name="filter"*/}
-              {/*      value={type}*/}
-              {/*      onChange={handleChange}*/}
-              {/*      className="moreOurProjects__dropdown-button"*/}
-              {/*  >*/}
-              {/*    {filterOptions.map(option => (*/}
-              {/*        <option key={option.type} value={option.type}>{option.name}</option>*/}
-              {/*    ))}*/}
-              {/*  </select>*/}
-              {/*</div>*/}
             </div>
             <div className="moreOurProjects__wrapper">
               {filteredProjects.map((project) => (
@@ -118,7 +105,6 @@ function MoreOurProjects() {
                       className="moreOurProjects__block"
                   >
                     <img
-                        loading="lazy"
                         src={`http://139.28.37.125:8000/img/${project.mainimage}`}
                         alt={project.name}
                         className="moreOurProjects__block__img"

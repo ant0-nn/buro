@@ -113,7 +113,6 @@ function OurProjects() {
               <div className="logos">
                 {logos.map((logo, index) => (
                     <img
-                        loading="lazy"
                         src={logo}
                         alt="#"
                         className="ourProjects-container--logos"
@@ -136,7 +135,6 @@ function OurProjects() {
           <div className="logos">
             {logos.map((logo, index) => (
                 <img
-                    loading="lazy"
                     src={logo}
                     alt="#"
                     className="ourProjects-container--logos"

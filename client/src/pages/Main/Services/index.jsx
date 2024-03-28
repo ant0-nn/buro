@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import './style.scss';
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Top from './Top/index';
 import Bottom from './Bottom/index';
 import privatImg from './img/privat.png';
@@ -40,33 +40,37 @@ const Services = () => {
       <section className="services" id="Services">
         <Top />
         <div className="services-center container">
-          <div style={{ backgroundImage: `url(${privatImg})` }} className="services-center-container">
-            <Link to="/projects?type=private"
-                  className="services-center-container__text">
+          <Link style={{ backgroundImage: `url(${privatImg})` }}
+                className="services-center-container"
+                to="/projects?type=private">
+            <div className="services-center-container__text">
               Приватні простори
               <button className="services-center-container__button">
                 <SvgIcon />
               </button>
-            </Link>
-          </div>
-          <div style={{ backgroundImage: `url(${comImg})` }} className="services-center-container">
-            <Link to="/projects?type=commerce"
-                  className="services-center-container__text">
+            </div>
+          </Link>
+          <Link style={{ backgroundImage: `url(${comImg})` }}
+                className="services-center-container"
+                to="/projects?type=commerce">
+            <div className="services-center-container__text">
               Комерційні приміщення
               <button className="services-center-container__button">
                 <SvgIcon />
               </button>
-            </Link>
-          </div>
-          <div style={{ backgroundImage: `url(${archImg})` }} className="services-center-container">
-            <Link to="/projects?type=architecture"
-                  className="services-center-container__text">
+            </div>
+          </Link>
+          <Link style={{ backgroundImage: `url(${archImg})` }}
+                className="services-center-container"
+                to="/projects?type=architecture"
+            >
+            <div className="services-center-container__text">
               Архітектура та будівництво
               <button className="services-center-container__button">
                 <SvgIcon />
               </button>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
         <Bottom />
       </section>

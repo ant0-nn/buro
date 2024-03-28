@@ -12,7 +12,6 @@ function Modal({ onClose, imageSrc, imageAlt, onPrev, onNext, isPrevDisabled, is
             &lt;
           </button>
           <img
-            loading="lazy"
             className="modal-img"
             src={`http://139.28.37.125:8000/img/${imageSrc}`}
             alt={imageAlt}

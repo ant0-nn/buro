@@ -106,7 +106,6 @@ const ProjectInfo = () => {
                     setShowSlider(true);
                   }}>
                   <img
-                    loading="lazy"
                     key={i}
                     className="project-info__img"
                     src={`http://139.28.37.125:8000/img/${item}`}
