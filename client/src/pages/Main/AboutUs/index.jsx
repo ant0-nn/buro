@@ -2,7 +2,7 @@
 import { useRef, useEffect, useState } from 'react';
 import './style.scss';
 import logoImg from '../../../img/ornament.svg';
-import firstPhoto from './img/1.jpg';
+import firstPhoto from '../../../img/1.webp';
 import firstGridPhoto from './img/photo2.png';
 import secondGridPhoto from './img/photo1.png';
 import thirdGridPhoto from './img/photo4.png';

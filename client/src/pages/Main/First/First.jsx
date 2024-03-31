@@ -44,11 +44,11 @@ const First = () => {
 
   const resetTimer = useCallback(() => {
     clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(goToNextPhoto, 10000);
+    intervalRef.current = setInterval(goToNextPhoto, 5000);
   }, [goToNextPhoto]);
 
   useEffect(() => {
-    intervalRef.current = setInterval(goToNextPhoto, 10000);
+    intervalRef.current = setInterval(goToNextPhoto, 5000);
     return () => clearInterval(intervalRef.current);
   }, [goToNextPhoto]);
 

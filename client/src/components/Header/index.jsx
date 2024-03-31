@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { useLocation, Link } from 'react-router-dom';
 import PopUpContainer from '../PopUp/PopUp-container/index.jsx';
 import Logo from '../../img/white-logo.webp';
 import { scroller } from 'react-scroll';
@@ -9,45 +9,47 @@ function Header() {
     const location = useLocation();
     const [isPopupVisible, setPopupVisible] = useState(false);
     const [isPopupSubmitted, setPopupSubmitted] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(true);
     const [nav, setNav] = useState(false);
-    const [isInfoPage, setIsInfoPage] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-
+    const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+    const lastScrollTop = useRef(0);
+    const [isScrollLocked, setScrollLocked] = useState(false);
+    
+    
+    useLayoutEffect(() => {
+        const handleScroll = () => {
+            if (nav) {
+                // Якщо навбар активний, просто повертати
+                return;
+            }
+            const { pageYOffset } = window;
+            
+            const isNavbarOpened = document.querySelector('.navbar.opened');
+            
+            if (!isNavbarOpened) {
+                if (pageYOffset > lastScrollTop.current) {
+                    setIsHeaderVisible(false);
+                } else if (pageYOffset < lastScrollTop.current) {
+                    setIsHeaderVisible(true);
+                }
+                lastScrollTop.current = pageYOffset;
+            }
+        };
+        
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [nav]);
     
     useEffect(() => {
-        if (location.pathname.startsWith('/projects/info/')) {
-        setIsInfoPage(true);
-        }
-    }, [location.pathname]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-        const innerWidth = window.innerWidth;
-        const thresholds = {
-            768: 740,
-            1024: 800,
-        };
-
-        let threshold = 0;
-        if (innerWidth >= 1024) {
-            threshold = thresholds[1024];
-        } else if (innerWidth >= 768) {
-            threshold = thresholds[768];
+        if (isScrollLocked) {
+            document.body.classList.add('no-scroll');
         } else {
-            threshold = 492;
+            document.body.classList.remove('no-scroll');
         }
+    }, [isScrollLocked]);
 
-        setIsScrolled(window.scrollY > threshold);
-        setScrolled(window.scrollY >= 100);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-        window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     const handleMobileNavClick = () => {
         setNav(false);
@@ -86,7 +88,7 @@ function Header() {
     };
 
     return (
-        <header className={`header ${isInfoPage ? 'infopage' : ''} ${scrolled ? 'scrolled' : ''}`}>
+        <header className={`header ${isHeaderVisible ? "visible" : ""}`}>
         <div className="container">
             <div className="header-block">
             <a onClick={() => handleClick('First ')}>
@@ -98,9 +100,9 @@ function Header() {
                     <li className="header-list__item">
                     <span onClick={() => handleClick('AboutUs')}>Про нас</span>
                     </li>
-                    <li className="header-list__item">
-                    <span onClick={() => handleClick('Projects')}>Проєкти</span>
-                    </li>
+                    <Link to="/projects" className="header-list__item">
+                    <span >Проєкти</span>
+                    </Link>
                     <li className="header-list__item">
                     <span onClick={() => handleClick('OurWork')}>Як ми працюємо</span>
                     </li>
@@ -113,7 +115,11 @@ function Header() {
                 </button>
                 </div>
             </div>
-            <div onClick={() => setNav(!nav)} className="header__btns">
+            <div onClick={() => {
+                setNav(!nav)
+                setScrollLocked(!isScrollLocked)
+                }}
+                 className="header__btns ">
                 <div className={`menu-icon ${nav ? 'open' : ''}`}>
                 <span></span>
                 <span></span>
@@ -139,4 +145,4 @@ function Header() {
     );
 }
 
-export default React.memo(Header);
+export default Header;

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from '../../utils/axios';
 
 const initialState = {
@@ -24,6 +24,15 @@ export const getProjectById = createAsyncThunk('project/getProjectByName', async
         console.log(e);
     }
 });
+
+export const getNewsProject = createAsyncThunk('project/getNewsProject', async () => {
+    try {
+        const {data} = await axios.get('/getprojectswithimageprev');
+        return data.filter((project) => project.section === 'new');
+    } catch (e) {
+        console.log(e)
+    }
+})
 
 const projectSlice = createSlice({
     name: 'project',
