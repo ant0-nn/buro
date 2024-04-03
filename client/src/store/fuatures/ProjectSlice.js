@@ -9,7 +9,8 @@ const initialState = {
 
 export const fetchProjects = createAsyncThunk('project/fetchProjects', async () => {
     try {
-        const response = await axios.get('/getprojectswithimageprev');
+        const response = await axios.get('/getprojectswithimageprev')
+        console.log(response.data)
         return response.data;
     } catch (e) {
         console.log(e);

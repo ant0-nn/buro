@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import {useState} from "react";
 import './style.scss';
 import { Link } from "react-router-dom";
 import Top from './Top/index';
@@ -7,7 +6,6 @@ import Bottom from './Bottom/index';
 import privatImg from './img/privat.png';
 import archImg from './img/ar.webp';
 import comImg from './img/commerce.jpg';
-import Sashas from "../../../img/images.jpg"
 
 const SvgIcon = () => {
   return (
@@ -41,71 +39,41 @@ const ServicesData = [
     {
         id: 1,
         backgroundImage: `url(${privatImg})`,
+        link: 'private',
         name: 'Приватні простори',
     },
     {
         id: 2,
         backgroundImage: `url(${comImg})`,
+        link: 'commerce',
         name: 'Комерційні приміщення',
     },
     {
         id: 3,
         backgroundImage: `url(${archImg})`,
+        link: 'architecture',
         name: 'Архітектура та будівництво',
     },
 ]
 
 const Services = () => {
-    const [Sasha, isSasha] = useState(false)
   return (
       <section className="services" id="Services">
           <Top/>
-          <img src={Sashas} className={`sasha ${Sasha ? 'open' : ''}`} alt=""/>
           <div className="services-center container">
               {ServicesData.map(item => (
-                  <div style={{backgroundImage: item.backgroundImage}}
+                  <Link style={{backgroundImage: item.backgroundImage}}
                        key={item.id}
-                       className="services-center-container"
-                       onClick={() => isSasha(!Sasha)}>
+                        to={`/projects?type=${item.link}`}
+                       className="services-center-container">
                       <div className="services-center-container__text">
                           {item.name}
                           <button className="services-center-container__button">
                               <SvgIcon/>
                           </button>
                       </div>
-                  </div>
+                  </Link>
               ))}
-              {/*<Link style={{ backgroundImage: `url(${privatImg})` }}*/}
-              {/*      className="services-center-container"*/}
-              {/*      to="/projects?type=private">*/}
-              {/*  <div className="services-center-container__text">*/}
-              {/*    Приватні простори*/}
-              {/*    <button className="services-center-container__button">*/}
-              {/*      <SvgIcon />*/}
-              {/*    </button>*/}
-              {/*  </div>*/}
-              {/*</Link>*/}
-              {/*<Link style={{ backgroundImage: `url(${comImg})` }}*/}
-              {/*      className="services-center-container"*/}
-              {/*      to="/projects?type=commerce">*/}
-              {/*  <div className="services-center-container__text">*/}
-              {/*    Комерційні приміщення*/}
-              {/*    <button className="services-center-container__button">*/}
-              {/*      <SvgIcon />*/}
-              {/*    </button>*/}
-              {/*  </div>*/}
-              {/*</Link>*/}
-              {/*<Link style={{ backgroundImage: `url(${archImg})` }}*/}
-              {/*      className="services-center-container"*/}
-              {/*      to="/projects?type=architecture"*/}
-              {/*  >*/}
-              {/*  <div className="services-center-container__text">*/}
-              {/*    Архітектура та будівництво*/}
-              {/*    <button className="services-center-container__button">*/}
-              {/*      <SvgIcon />*/}
-              {/*    </button>*/}
-              {/*  </div>*/}
-              {/*</Link>*/}
           </div>
           <Bottom/>
       </section>
