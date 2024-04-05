@@ -1,0 +1,17 @@
+.project-filter {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .filter-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  .filter-button.active {
+    color: blue; /* змініть кольори підсвічування, які вам потрібні */
+  }
+  

@@ -1,18 +1,19 @@
-import  { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProjects, selectProjects } from '../../store/fuatures/ProjectSlice';
 import Preloader from '../../components/Preloader';
 import { GoArrowUpRight } from 'react-icons/go';
-import { FaChevronDown } from "react-icons/fa";
 import Carusel from "./carusel/Carusel.jsx";
+import ProjectFilter from "../../components/ProjectFilter/ProjectFilter.jsx";
+import LaptopFilter from "../../components/LaptopFilter/LaptopFilter.jsx";
+import useMediaQuery from '../../hooks/useMediaQuery.jsx'; 
 
 function MoreOurProjects() {
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects)
   console.log(projects)
-  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -22,7 +23,6 @@ function MoreOurProjects() {
   useEffect(() => {
     dispatch(fetchProjects());
   }, [dispatch]);
-  
   
   const filterOptions = useMemo(() => [
     {
@@ -43,6 +43,12 @@ function MoreOurProjects() {
     },
   ], []);
   
+  // Визначаємо, чи ми на мобільному пристрої чи на комп'ютері
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  
+  // Вибираємо відповідний фільтр залежно від типу пристрою
+  const FilterComponent = isMobile ? ProjectFilter : LaptopFilter;
+  
   const filteredProjects = useMemo(() => {
     if (type === 'all') {
       return projects;
@@ -51,75 +57,48 @@ function MoreOurProjects() {
     }
   }, [type, projects]);
   
-  const handleHovered = useCallback(() => {
-    setIsHovered(prevState => !prevState);
-  }, []);
   const handleChange = (selectedType) => {
     setType(selectedType);
     navigate(`/projects?type=${selectedType}`);
-    setIsHovered(false);
   };
   
-  const typeWatch = () => {
-    const information = filterOptions.find(block => block.type === type)
-    return information.name
-  }
-  
-  const chevronRotationStyle = useMemo(() => ({
-    transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
-    transition: 'transform 0.3s ease', // Додайте плавну анімацію
-  }), [isHovered]);
-  
   return (
-      <section className="moreOurProjects">
-        <Preloader />
-        <Carusel />
-        <div className="moreOurProjects-section">
-          <div className="container">
-            <div className="moreOurProjects__filter-buttons">
-              <div className={`moreOurProjects__dropdown ${isHovered ? 'hovered' : ''}`}>
-                <button
-                    onClick={handleHovered}
-                    className="moreOurProjects__dropdown-button"
-                >
-                  {typeWatch()} <FaChevronDown style={chevronRotationStyle}/>
-                </button>
-                <div className={`moreOurProjects__dropdown-content${isHovered ? ' hovered' : ''}`}>
-                  {filterOptions.map((filter) => (
-                      <button
-                          key={filter.name}
-                          onClick={() => handleChange(filter.type)} // Правильно передаємо тип фільтра
-                          className="moreOurProjects__dropdown-buttons"
-                      >
-                        {filter.name}
-                      </button>
-                  ))}
+    <section className="moreOurProjects">
+      <Preloader />
+      <Carusel />
+      <div className="moreOurProjects-section">
+        <div className="container">
+          <div className="moreOurProjects__filter-buttons">
+            {/* Використовуємо вибраний компонент фільтра */}
+            <FilterComponent
+              filterOptions={filterOptions}
+              selectedType={type}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="moreOurProjects__wrapper">
+            {filteredProjects.map((project) => (
+              <NavLink
+                key={project.id}
+                to={`/projects/info/${project.id}`}
+                className="moreOurProjects__block"
+              >
+                <img
+                  src={`http://139.28.37.125:8000/img/${project.mainimage}`}
+                  alt={project.name}
+                  className="moreOurProjects__block__img"
+                />
+                <div className="moreOurProjects__block__info">
+                  <h3 className="moreOurProjects__block__name">{project.name}</h3>
+                  <span className="moreOurProjects__block__square">{project.square}</span>
+                  <GoArrowUpRight className="moreOurProjects__block__arrow"/>
                 </div>
-              </div>
-            </div>
-            <div className="moreOurProjects__wrapper">
-              {filteredProjects.map((project) => (
-                  <NavLink
-                      key={project.id}
-                      to={`/projects/info/${project.id}`}
-                      className="moreOurProjects__block"
-                  >
-                    <img
-                        src={`http://139.28.37.125:8000/img/${project.mainimage}`}
-                        alt={project.name}
-                        className="moreOurProjects__block__img"
-                    />
-                    <div className="moreOurProjects__block__info">
-                      <h3 className="moreOurProjects__block__name">{project.name}</h3>
-                      <span className="moreOurProjects__block__square">{project.square}</span>
-                      <GoArrowUpRight className="moreOurProjects__block__arrow"/>
-                    </div>
-                  </NavLink>
-              ))}
-            </div>
+              </NavLink>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
   );
 }
 
