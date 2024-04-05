@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import  { useState, useEffect, useMemo } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,6 @@ import useMediaQuery from '../../hooks/useMediaQuery.jsx';
 function MoreOurProjects() {
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects)
-  console.log(projects)
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);

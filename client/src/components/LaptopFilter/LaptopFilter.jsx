@@ -7,19 +7,20 @@ const ProjectFilter = ({ filterOptions, selectedType, onChange }) => {
   };
 
   return (
-    <div className="project-flter">
-        <div className="project-filter-wrapper">
-      {filterOptions.map((filter) => (
-        <button
-          key={filter.type}
-          onClick={() => handleClick(filter.type)}
-          className={`filter-button ${selectedType === filter.type ? 'active' : ''}`}
-        >
-          {filter.name}
-        </button>
-      ))}
-    </div>
-    </div>
+      <div className="project-filter">
+          <div className="project-filter__wrapper">
+              {filterOptions.map((filter) => (
+                  <button
+                    key={filter.type}
+                    onClick={() => handleClick(filter.type)}
+                    className={`filter-button ${selectedType === filter.type ? 'active' : ''}`}
+                  >
+                    {filter.name}
+                  </button>
+              ))}
+          </div>
+        <div className="project-filter__line"></div>
+      </div>
   );
 };
 
