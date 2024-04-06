@@ -92,7 +92,7 @@ const intervalRef = useRef(null);
                     className="First__projects__block"
                     key={item.id}>
                     <img
-                        src={`http:///img/${item.mainimage}`}
+                        src={`/img/${item.mainimage}`}
                       className="First__projects__img"
                       alt=""
                     />
