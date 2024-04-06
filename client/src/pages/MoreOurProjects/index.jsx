@@ -83,7 +83,7 @@ function MoreOurProjects() {
                 className="moreOurProjects__block"
               >
                 <img
-                  src={`http:///img/${project.mainimage}`}
+                  src={`/img/${project.mainimage}`}
                   alt={project.name}
                   className="moreOurProjects__block__img"
                 />

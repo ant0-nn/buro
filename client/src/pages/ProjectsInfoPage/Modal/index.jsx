@@ -13,7 +13,7 @@ function Modal({ onClose, imageSrc, imageAlt, onPrev, onNext, isPrevDisabled, is
           </button>
           <img
             className="modal-img"
-            src={`http:///img/${imageSrc}`}
+            src={`/img/${imageSrc}`}
             alt={imageAlt}
           />
           <button className="modal-arrow next" disabled={isNextDisabled} onClick={onNext}>
