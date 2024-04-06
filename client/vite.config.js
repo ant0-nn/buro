@@ -7,5 +7,26 @@ export default defineConfig({
   server: {
     port: 80,
   },
-  assetsInclude: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.webp', '**/*.ico'],
-})
+  assetsInclude: [
+    "**/*.svg",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg",
+    "**/*.gif",
+    "**/*.webp",
+    "**/*.ico",
+  ],
+  proxy: {
+    "/api": {
+      target: "http://localhost:5000",
+      secure: false,
+      changeOrigin: true,
+    },
+    "/img": {
+      target: "http://localhost:5000",
+      secure: false,
+      changeOrigin: true,
+    },
+  },
+});
+
