@@ -69,19 +69,19 @@ function AboutUs() {
   return (
     <section className="section">
       <div className="section-container" id="AboutUs" ref={containerRef}>
-        <img loading="lazy" src={logoImg} alt="#" className="section-container--logos" />
+        <img src={logoImg} alt="#" className="section-container--logos" />
         <h1 className="section-container--title" ref={titleRef}>
           Про нас
         </h1>
 
         {logos.map((logo, index) => (
-          <img loading="lazy" src={logo} alt="#" className="section-container--logos" key={index} />
+          <img src={logo} alt="#" className="section-container--logos" key={index} />
         ))}
       </div>
       <div className="container">
         <div className="section-grid">
           <div className="section-grid__container--photo">
-            <img loading="lazy" src={firstPhoto} alt="f" className="section-grid--photo" />
+            <img src={firstPhoto} alt="f" className="section-grid--photo" />
           </div>
           <p className="section-grid--bureaux">
             <span>BureauX (Бюро Ікс)</span> – бюро архітектури та дизайну, засновниками якого є
@@ -214,7 +214,6 @@ function AboutUs() {
             <span className="container1-number box4">04</span>
             {windowWidth <= 1024 && (
               <img
-                loading="lazy"
                 src={fifthGridPhoto}
                 alt=""
                 className="container1-image box4-photo"
@@ -222,7 +221,6 @@ function AboutUs() {
             )}
             {windowWidth > 1024 && (
               <img
-                loading="lazy"
                 src={fourthGridPhoto}
                 alt=""
                 className="container1-image box4-photo"

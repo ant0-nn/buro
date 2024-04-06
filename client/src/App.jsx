@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { inject } from '@vercel/analytics';
 import Preloader from './components/Preloader/index.jsx';
 import { ToastContainer } from 'react-toastify';
-import Cursor from './components/Cursor/index';
 import Header from "./components/Header/index.jsx";
 import Footer from "./components/Footer/index.jsx";
 import PopUp from "./components/PopUp/index.jsx";
@@ -19,7 +18,6 @@ function App() {
     return (
         <Suspense fallback={<Preloader/>}>
             <Router>
-                <Cursor />
                 <Header />
                 <Routes>
                     <Route exact path="/" element={<Main />} />

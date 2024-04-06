@@ -38,6 +38,7 @@
   &-logo {
     width: 162.357px;
     height: 39px;
+    cursor: pointer;
   }
   &-ornament {
     display: none;
@@ -106,7 +107,7 @@
 
     &__item {
       position: relative;
-
+      cursor: pointer;
       &__link {
         color: $white-color;
         font-family: "IBM Plex Mono", monospace;

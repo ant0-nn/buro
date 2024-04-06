@@ -1,22 +1,23 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Logo from "../../img/black-logo.webp";
-import "./style.scss"
-import { useSelector } from "react-redux";
-import { selectLoading } from "../../store/fuatures/ProjectSlice.js";
+import "./style.scss";
 
 const PreLoader = () => {
-    const loading = useSelector(selectLoading);
-    const [showLoader, setShowLoader] = useState(true);
-    
+    const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowLoader(false);
-        }, 2000); // Затримка в мілісекундах (1 секунда = 1000 мілісекунд)
         
-        return () => clearTimeout(timer); // Очистити таймер при розмонтовуванні компонента
-    }, []);
-    
-    if (loading && showLoader) {
+        if (document.readyState === 'complete') {
+            setLoaded(true);
+        } else {
+            const handleLoad = () => setLoaded(true);
+            window.addEventListener('load', handleLoad);
+
+            return () => window.removeEventListener('load', handleLoad);
+        }
+    }, []); 
+
+    if (!loaded) {
         return (
             <div className="preloader">
                 <div className="preloader-container">
@@ -27,7 +28,7 @@ const PreLoader = () => {
             </div>
         );
     }
-    
+
     return null;
 };
 

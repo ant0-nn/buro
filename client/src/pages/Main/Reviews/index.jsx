@@ -86,7 +86,7 @@ function Reviews() {
 
       return (
         <div className="reviews-people" key={index}>
-          <img loading="lazy" src={image} className="reviews-people--image" alt="" />
+          <img src={image} className="reviews-people--image" alt="" />
           <p className="reviews-people--name">
             {name}
             <span>, {city}</span>

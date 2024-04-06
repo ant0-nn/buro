@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, Link } from 'react-router-dom';
 import PopUpContainer from '../PopUp/PopUp-container/index.jsx';
 import Logo from '../../img/white-logo.webp';
@@ -15,27 +15,9 @@ function Header() {
     const [scrolled, setScrolled] = useState(false);
     
     useEffect(() => {
-        if (location.pathname.startsWith('/projects/info/')) {
-            setIsInfoPage(true);
-        }
-    }, [location.pathname]);
-    
-    useEffect(() => {
         const handleScroll = () => {
             const innerWidth = window.innerWidth;
-            const thresholds = {
-                768: 740,
-                1024: 800,
-            };
-            
-            let threshold = 0;
-            if (innerWidth >= 1024) {
-                threshold = thresholds[1024];
-            } else if (innerWidth >= 768) {
-                threshold = thresholds[768];
-            } else {
-                threshold = 492;
-            }
+            const threshold = innerWidth >= 1024 ? 800 : innerWidth >= 768 ? 740 : 492;
             
             setIsScrolled(window.scrollY > threshold);
             setScrolled(window.scrollY >= 100);
@@ -43,9 +25,7 @@ function Header() {
         
         window.addEventListener('scroll', handleScroll);
         
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     
     const handleMobileNavClick = () => {
@@ -98,13 +78,13 @@ function Header() {
                                     <span onClick={() => handleClick('AboutUs')}>Про нас</span>
                                 </li>
                                 <Link to="/projects" className="header-list__item">
-                                    <span >Проєкти</span>
+                                    <span>Проєкти</span>
                                 </Link>
                                 <li className="header-list__item">
-                                    <span onClick={() => handleClick('OurWork')}>Як ми працюємо</span>
+                                    <span onClick={() => handleClick('Services')}>Послуги</span>
                                 </li>
                                 <li className="header-list__item">
-                                    <span onClick={() => handleClick('Services')}>Послуги</span>
+                                    <span onClick={() => handleClick('OurWork')}>Як ми працюємо</span>
                                 </li>
                             </ul>
                             <button className="header__btn" onClick={openPopup}>
