@@ -56,7 +56,7 @@ const ProjectInfo = () => {
 
   if (project !== null) {
     projectBlockInfoStyle = {
-      backgroundImage: `url(http://139.28.37.125:8000/img/${project.mainimage})`,
+      backgroundImage: `url(http:///img/${project.mainimage})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
     };
@@ -108,7 +108,7 @@ const ProjectInfo = () => {
                   <img
                     key={i}
                     className="project-info__img"
-                    src={`http://139.28.37.125:8000/img/${item}`}
+                    src={`http:///img/${item}`}
                     alt=""
                   />
                 </div>

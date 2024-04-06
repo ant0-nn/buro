@@ -83,7 +83,7 @@ function MoreOurProjects() {
                 className="moreOurProjects__block"
               >
                 <img
-                  src={`http://139.28.37.125:8000/img/${project.mainimage}`}
+                  src={`http:///img/${project.mainimage}`}
                   alt={project.name}
                   className="moreOurProjects__block__img"
                 />
